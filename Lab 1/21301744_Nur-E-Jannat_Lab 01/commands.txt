@@ -1,0 +1,112 @@
+1.Enter privileged EXEC mode
+Router>enable
+
+2.Enter global configuration mode
+Router#configure terminal
+
+3.Configure the router name as R1
+Router(config)#hostname R1
+
+4.Disable DNS lookup
+R1(config)#no ip domain-lookup
+
+5.Configure the EXEC mode password
+R1(config)#enable secret class
+
+6.Configure a message-of-the-day banner
+R1(config)#banner motd &
+******************************** 
+ !!!AUTHORIZED ACCESS ONLY!!! 
+******************************** 
+&
+
+7.Configure the console password on the router
+R1(config)#line console 0 
+R1(config-line)#password cisco 
+R1(config-line)#login 
+R1(config-line)#exit
+
+8.Configure the password for the virtual terminal lines
+R1(config)#line vty 0 4 
+R1(config-line)#password cisco 
+R1(config-line)#login 
+R1(config-line)#exit
+
+9.Configure the FastEthernet0/0 interface
+R1(config)#interface fastethernet 0/0
+R1(config-if)#ip address 192.168.1.1 255.255.255.0
+R1(config-if)#no shutdown
+
+10.Configure the Serial0/0/0 interface
+R1(config-if)#interface serial 0/0/0
+R1(config-if)#ip address 192.168.2.1 255.255.255.0 
+R1(config-if)#clock rate 64000 
+R1(config-if)#no shutdown
+
+11.Return to privileged EXEC mode
+R1(config-if)#end
+
+12.Save the R1 configuration
+R1#copy running-config startup-config
+
+
+
+
+13.Enter privileged EXEC mode
+Router>enable
+
+14.Enter global configuration mode
+Router#configure terminal
+
+15.Configure the router name as R2 
+Router(config)#hostname R2
+
+16.Disable DNS lookup
+R2(config)#no ip domain-lookup
+
+17.Configure the EXEC mode password
+R2(config)#enable secret class
+
+18.Configure a message-of-the-day banner
+R2(config)#banner motd &
+******************************** 
+ !!!AUTHORIZED ACCESS ONLY!!! 
+******************************** 
+&
+
+19.Configure the console password on the router
+R2(config)#line console 0 
+R2(config-line)#password cisco 
+R2(config-line)#login 
+R2(config-line)#exit
+
+20.Configure the password for the virtual terminal lines
+R2(config)#line vty 0 4 
+R2(config-line)#password cisco 
+R2(config-line)#login 
+R2(config-line)#exit
+
+21.Configure the Serial 0/0/0 interface
+R2(config)#interface serial 0/0/0
+R2(config-if)#ip address 192.168.2.2 255.255.255.0
+R2(config-if)#no shutdown
+
+22. Configure the FastEthernet0/0 interface
+R2(config-if)#interface fastethernet 0/0
+R2(config-if)#ip address 192.168.3.1 255.255.255.0 
+R2(config-if)#no shutdown
+
+23.Return to privileged EXEC mode
+R2(config-if)#end
+
+24.Save the R2 configuration
+R2#copy running-config startup-config
+
+25. Verify that routing tables have the following routes
+R1#show ip route
+R2#show ip route
+
+26.Verify interface configurations
+R1#show ip interface brief
+R2#show ip interface brief
+
